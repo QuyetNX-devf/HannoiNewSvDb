@@ -17,6 +17,8 @@ const rateRouter = require("./routes/rateProduct");
 const categoryArticleRouter = require("./routes/categoryArticle");
 const cartRouter = require("./routes/cart");
 const flashDealRouter = require("./routes/flashDeal");
+const productLikeRouter = require("./routes/likeProduct");
+const bannerCategoryRouter = require("./routes/bannerCategory");
 
 const Products = require("./models/Products");
 const CategoryProduct = require("./models/CategoryProduct");
@@ -61,6 +63,8 @@ app.use("/api/rate", rateRouter);
 app.use("/api/category-article", categoryArticleRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/flash-deal", flashDealRouter);
+app.use("/api/product-like", productLikeRouter);
+app.use("/api/banner-category", bannerCategoryRouter);
 // app.use("/api/products", accountRouter);
 
 const PORT = 5000;

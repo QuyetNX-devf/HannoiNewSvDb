@@ -8,7 +8,13 @@ const CategoryProduct = require("../models/CategoryProduct");
 // @access Private
 
 router.get("/", async (req, res) => {
-  console.log(req.query);
+  var ip = req.headers["x-forwarded-for"];
+
+  var ip =
+    (req.headers["x-forwarded-for"] || "").split(",")[0] ||
+    req.connection.remoteAddress;
+
+  console.log(ip);
   const type = req.query.type;
   let cat;
   try {

@@ -101,7 +101,7 @@ GET http://localhost:5000/api/banner/category?idCategory=12h3sdsd
 
 ###
 //get products
-GET http://localhost:5000/api/products
+GET http://localhost:5000/api/products?type=hot
 
 ###
 //get article
@@ -160,15 +160,52 @@ POST  http://localhost:5000/api/flash-deal
 Content-Type: application/json
 
 {
-    "product": "62cc89f1725035f700a040fc",
-    "date": "2021-9-07",
-    "priceDeal": 500000
+    "product": "62cc89f1725035f700a04122",
+    "date": "2022-12-07",
+    "priceDeal": 3500000
 
 }
 
 ###
 // get flash deal
 GET   http://localhost:5000/api/flash-deal
+
+
+
+###
+// post user like product
+POST  http://localhost:5000/api/product-like
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmJkMTQ4OTk0YTI2MzFhMWQ2OWU4YWYiLCJpYXQiOjE2NTY2MDA2MjV9.z6DSUXTaV5DpOQznrAwNLzW7NR4-ADxA3Z9tXkj-hz4
+
+{
+    "idProduct": 15
+
+}
+
+###
+// get user like product
+GET  http://localhost:5000/api/product-like
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0YTIyYjRkZDU5MzM3Y2JhZWU1YjEiLCJpYXQiOjE2NjA5OTg4NDJ9.0Spyv2Zbl1UMkM8zcp9w_sEWbNCVzm_BWs9HOQP7I0Y
+
+###
+// get product liked
+GET  http://localhost:5000/api/product-like/15
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmJkMTQ4OTk0YTI2MzFhMWQ2OWU4YWYiLCJpYXQiOjE2NTY2MDA2MjV9.z6DSUXTaV5DpOQznrAwNLzW7NR4-ADxA3Z9tXkj-hz4
+
+
+###
+// Put delete product liked
+PUT   http://localhost:5000/api/product-like
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmJkMTQ4OTk0YTI2MzFhMWQ2OWU4YWYiLCJpYXQiOjE2NTY2MDA2MjV9.z6DSUXTaV5DpOQznrAwNLzW7NR4-ADxA3Z9tXkj-hz4
+
+{
+    "productId": 11
+
+}
 
 
 

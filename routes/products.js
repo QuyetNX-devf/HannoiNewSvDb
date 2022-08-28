@@ -84,6 +84,7 @@ router.get("/", async (req, res) => {
     categoryId,
     minMaxPrice = true,
     page = 1,
+    type,
     idProducts,
   } = params;
   try {
@@ -147,6 +148,27 @@ router.get("/", async (req, res) => {
 
     if (sttSort === "price-desc") {
       sortListproduct = sortListproduct.sort((a, b) => b.price - a.price);
+    }
+
+    if (type === "new") {
+      sortListproduct = sortListproduct.filter((product) => {
+        return product.productType.isNew === 1;
+      });
+    }
+    if (type === "hot") {
+      sortListproduct = sortListproduct.filter((product) => {
+        return product.productType.isHot === 1;
+      });
+    }
+    if (type === "bestSale") {
+      sortListproduct = sortListproduct.filter((product) => {
+        return product.productType.isBestSale === 1;
+      });
+    }
+    if (type === "online-only") {
+      sortListproduct = sortListproduct.filter((product) => {
+        return product.productType["online-only"] === 1;
+      });
     }
 
     if (keySearch) {

@@ -65,6 +65,9 @@ router.post("/", async (req, res) => {
 // @desc GET flash deal
 // @access Private
 router.get("/", async (req, res) => {
+  const params = req.query;
+  const { limit = 10, page = 1 } = params;
+
   try {
     const currentDate = new Date();
     const deals = await FlashDeal.find().populate("product");
@@ -83,7 +86,18 @@ router.get("/", async (req, res) => {
       return deal.dateDeal;
     }).dateDeal;
 
-    res.json({ success: true, data: { deals: sortDeal, maxDateDeal } });
+    const totalRows = sortDeal.length;
+
+    const start = (page - 1) * limit;
+
+    const end = page * limit;
+
+    const newProducts = sortDeal.slice(start, end);
+
+    res.json({
+      success: true,
+      data: { deals: newProducts, maxDateDeal, total: totalRows },
+    });
   } catch (error) {
     res.status(500).json({ success: false, message: "internal server error" });
   }
